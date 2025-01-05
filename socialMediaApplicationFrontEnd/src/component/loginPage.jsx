@@ -11,12 +11,12 @@ function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/login', {
+      const response = await axios.post('http://localhost:8080/auth/authenticate', {
         username,
         password,
       });
-      localStorage.setItem('token', response.data);
-      navigate('/dashboard'); // Redirect to dashboard after login
+      localStorage.setItem('token', response.data.token);
+      navigate('/dashboard'); 
     } catch (err) {
       setError('Invalid username or password');
     }

@@ -16,19 +16,6 @@ function LandingPage() {
           >
             Login
           </Link>
-          <Link
-            to="/register"
-            className="bg-blue-500 text-white font-bold py-2 px-6 rounded shadow hover:bg-blue-700"
-          >
-            Register
-          </Link>
-
-          <Link
-            to="/dasboard" 
-             className="bg-white text-blue-500 font-bold py-2 px-6 rounded shadow hover:bg-gray-100"
-          >
-            Dashboard
-          </Link>
         </div>
       </div>
     </div>

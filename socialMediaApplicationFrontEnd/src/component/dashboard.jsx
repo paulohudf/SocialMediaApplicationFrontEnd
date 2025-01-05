@@ -1,12 +1,17 @@
-// DashboardPage.js
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Home from './homePage';
 import Notifications from './notificationComponent';
 import Messaging from './messagingComponent';
-import { Link } from 'react-router-dom';
 
 function DashboardPage() {
   const [currentPage, setCurrentPage] = useState('home');
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Clear the token
+    navigate('/login'); // Redirect to login page
+  };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -28,11 +33,17 @@ function DashboardPage() {
         <h1 className="text-xl font-bold text-blue-500">SocialSphere</h1>
         <div className="space-x-4">
           <Link
-                      to="/profile"
-                      className="bg-blue-500 text-white font-bold py-2 px-6 rounded shadow hover:bg-blue-700"
-                    />
-
-          <button className="text-gray-600 hover:text-blue-500">Logout</button>
+            to="/profile"
+            className="bg-blue-500 text-white font-bold py-2 px-6 rounded shadow hover:bg-blue-700"
+          >
+            Profile
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="text-gray-600 hover:text-blue-500"
+          >
+            Logout
+          </button>
         </div>
       </nav>
 
